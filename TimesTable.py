@@ -29,6 +29,7 @@ class data():
         data.gen()
         gui.question.configure(text= "What is "+ str(data.rand1)+" * "+str(data.rand2)+" =")
         gui.answer.configure( text = "")
+        gui.entry1.delete(0, END)
 
 
 
