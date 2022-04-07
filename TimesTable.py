@@ -1,47 +1,38 @@
 """Times Table Task"""
-
 from tkinter import *
 import random
 
-
-class TimesTable:
+class gui:
     def __init__(self, parent):
+        data.gen()
+        gui.entry1 = Entry (parent,width=20)
+        gui.entry1.grid() 
+        Button(parent,text="check", command=data.check).grid()
+        Button(parent,text="next",command=data.next).grid()
+        gui.answer=Label(parent, text = "")
+        gui.answer.grid()
+        gui.question=Label(parent,text= "What is "+ str(data.rand1)+"*"+str(data.rand2)+" =")
+        gui.question.grid()
 
-        self.rand1=random.randint(1, 10)
-        self.rand2=random.randint(1, 10)
-        self.ans=self.rand1 * self.rand2
+class data():
+    def gen():
+        data.rand1=random.randint(1, 10)
+        data.rand2=random.randint(1, 10)
+        data.ans=data.rand1 * data.rand2
 
-        canvas1 = Canvas(parent)
-        canvas1.grid()
-        self.entry1 = Entry (parent) 
-        canvas1.create_window(300,50,window=self.entry1)
-        checkbtn=Button(parent,text="check", command=self.check)
-        checkbtn.grid()
-        next=Button(parent,text="next",command=self.next)
-        next.grid()
-        self.text=Label(parent, text = "")
-        self.text.grid()
-        self.question=Label(parent,text= self.rand1)
-        self.question.grid()
-        self.question1=Label(parent,text= self.rand2)
-        self.question1.grid()
-
-    def next(self):
-        self.rand1=random.randint(1, 10)
-        self.rand2=random.randint(1, 10)
-        self.ans=self.rand1 * self.rand2
-        self.question.configure(text=self.rand1)
-        self.question1.configure(text=self.rand2)
-
-    def check(self):
-        if int(self.entry1.get()) == self.ans :
-            self.text.configure(text="Correct")
-            self.text.grid()
+    def check():
+        if int(gui.entry1.get()) == data.ans :
+            gui.answer.configure(text="Correct")
         else:
-            self.text.configure(text="Incorrect")
-            self.text.grid()
+            gui.answer.configure(text="Incorrect")
+    def next():
+        data.gen()
+        gui.question.configure(text= "What is "+ str(data.rand1)+" * "+str(data.rand2)+" =")
+        gui.answer.configure( text = "")
 
 
+
+   
 root = Tk()
-TimesTable(root)
+gui(root)
 root.mainloop()
