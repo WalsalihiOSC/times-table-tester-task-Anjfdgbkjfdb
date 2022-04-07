@@ -6,13 +6,13 @@ class gui:
     def __init__(self, parent):
         data.gen()
         gui.entry1 = Entry (parent,width=20)
-        gui.entry1.grid() 
-        Button(parent,text="check", command=data.check).grid()
-        Button(parent,text="next",command=data.next).grid()
+        gui.entry1.grid(row=1,column=2) 
+        Button(parent,text="check", command=data.check).grid(row=2,column=1)
+        Button(parent,text="next",command=data.next).grid(row=2,column=2)
         gui.answer=Label(parent, text = "")
-        gui.answer.grid()
+        gui.answer.grid(row=3, columnspan=2,column=1)
         gui.question=Label(parent,text= "What is "+ str(data.rand1)+"*"+str(data.rand2)+" =")
-        gui.question.grid()
+        gui.question.grid(row=1,column=1)
 
 class data():
     def gen():
